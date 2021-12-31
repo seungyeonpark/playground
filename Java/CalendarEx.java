@@ -1,12 +1,38 @@
-package mc.ys.lesson4;
+package mc.ys.lesson5;
 
-public class Calendar {
+import java.util.Scanner;
+
+public class CalendarEx {
 
     public static void main(String[] args) {
-
+        CalendarEx cm = new CalendarEx();
+        cm.start();
+    }
+    
+    public void start() {
+        Scanner sc = new Scanner(System.in);
+        boolean flag = false;
+        
+        while(!flag) {
+            System.out.print("Input month >>> ");
+            int cmd = sc.nextInt();
+            
+            makeCalendar(cmd);
+            
+            System.out.print("be continue> [Yes: 1, No: 0] >>> ");
+            cmd = sc.nextInt();
+            if (cmd == 0) {
+                System.out.println("Calendar Service is stop!");
+                flag = true;
+            }
+        }
+        sc.close();
+    }
+    
+    public void makeCalendar(int mon) {
         // 2021년 달력
         int year = 2021;
-        int month = 12; // TODO 월 입력 받아 수정 가능하도록
+        int month = mon;
         
         int[] spaces = new int[12];
         int[] lastDays = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -16,10 +42,9 @@ public class Calendar {
             lastDays[1] = 29;
         }
         
-        int spaceValue = 2; // 2020년 12월 빈칸정보 2
-        for (int i = 0; i < 12; i++) {
-            spaces[i] = (lastDays[i] + spaceValue) % 7;
-            spaceValue = spaces[i];
+        spaces[0] = (2 + 31) % 7; // 2020년 12월 빈칸정보 2
+        for (int i = 1; i < 12; i++) {
+            spaces[i] = (lastDays[i - 1] + spaces[i - 1]) % 7;
         }
         
         int space = spaces[month - 1];
@@ -37,8 +62,8 @@ public class Calendar {
             if((space + day) % 7 == 0) {
                 System.out.println();
             }
-            day = day + 1;
+            day++;
         }
+        System.out.println();
     }
-
 }
