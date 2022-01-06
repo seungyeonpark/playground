@@ -1,10 +1,32 @@
 package mc.ys.lesson6;
 
 public class LottoBall {
-    int ballNumber;
-    boolean isSelected;
+    private int ballNumber;
+    private boolean selected;
     
-    LottoBall (int ballNumber) {
+    public LottoBall (int ballNumber) {
         this.ballNumber = ballNumber;
+    }
+
+    public int getBallNumber() {
+        return ballNumber;
+    }
+	
+    public boolean getSelected() {
+        return this.selected;
+    }
+	
+    private void setBallNumber(int ballNumber) {
+        this.ballNumber = ballNumber;
+    }
+	
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+
+    @Override
+    public String toStrong() {
+        String status = this.selected ? "선택" : "미선택";
+        return "나의 번호는 " + this.ballNumber + "이고 현재" + status + "된 상태입니다.";
     }
 }
