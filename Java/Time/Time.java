@@ -22,10 +22,10 @@ public class Time {
     }
     
     public void setMinute(int m) {
-        this.minute = Math.min(Math.max(0, m), 23);
+        this.minute = Math.min(Math.max(0, m), 59);
     }
     
     public void setSecond (int s) {
-        this.second = Math.min(Math.max(0, s), 23);
+        this.second = Math.min(Math.max(0, s), 59);
     }
 }
