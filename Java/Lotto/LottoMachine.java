@@ -1,28 +1,50 @@
-package mc.ys.lesson6;
+package mc.ys.lesson10;
+
+import java.util.Random;
 
 public class LottoMachine {
-    LottoBall[] balls;
+    private final static int TOTAL_BALL_NUMS = 45;
+    private final static int SELECT_BALL_NUMS = 6;
+    private LottoBall[] balls;
     
-    LottoMachine (LottoBall[] balls) { // 접근 제어자?
-        this.balls = balls;
+    public LottoMachine() {
+        this.balls = new LottoBall[TOTAL_BALL_NUMS];
     }
-    
-    void startMachine() {
-        System.out.println("로또 번호 뽑기!");
+
+    public void startMachine() {
+        setBalls();
         
-        for (int i = 0; i < 6; i++) {
-            LottoBall ball = this.getBall();
+        System.out.println("START!");
+        
+        for (int i = 0; i < SELECT_BALL_NUMS; i++) {
+            LottoBall ball = selectBall();
+            System.out.printf("로또볼 하나를 뽑았습니다: %d%n", ball.getNumber());
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+        
+        System.out.println("FINISH!");
     }
     
-    LottoBall getBall() {
-        LottoBall ball = null;
-        System.out.println("로또볼을 하나 선택했습니다");
-        return ball;
+    private void setBalls() {
+        for (int i = 0; i < TOTAL_BALL_NUMS; i++) {
+            balls[i] = new LottoBall(i + 1);
+        }
+    }
+    
+    private LottoBall selectBall() {
+        Random rnd = new Random();
+
+        while (true) {
+            int index = rnd.nextInt(TOTAL_BALL_NUMS);
+            
+            if (!balls[index].getSelected()) {
+                balls[index].setSelected(true);
+                return balls[index];
+            }
+        }
     }
 }
