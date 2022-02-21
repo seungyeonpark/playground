@@ -1,19 +1,15 @@
 package library.Library.book;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;
 
 @Component
+@RequiredArgsConstructor
 public class BookRepositoryServiceImpl implements BookRepositoryService{
 
     private final BookRepository bookRepository;
-
-    @Autowired
-    public BookRepositoryServiceImpl(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
-    }
 
     @Override
     public void insertBook(Book book) {
