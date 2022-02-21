@@ -1,6 +1,6 @@
 package library.Library.rent;
 
-import library.Library.StudentAppConfig;
+import library.Library.AppConfig;
 import library.Library.book.Book;
 import library.Library.book.BookRepository;
 import org.junit.jupiter.api.Test;
@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class StudentRentServiceTest {
 
-    ApplicationContext ac = new AnnotationConfigApplicationContext(StudentAppConfig.class);
+    ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
 
     @Test
     void rentBook() {

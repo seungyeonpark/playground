@@ -1,6 +1,6 @@
 package library.Library.beanfind;
 
-import library.Library.ProfessorAppConfig;
+import library.Library.AppConfig;
 import library.Library.rent.ProfessorRentService;
 import library.Library.rent.RentService;
 import org.assertj.core.api.Assertions;
@@ -11,7 +11,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class ProfessorAppConfigTest {
 
-    AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(ProfessorAppConfig.class);
+    AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
 
     @Test
     @DisplayName("애플리케이션 빈 출력")

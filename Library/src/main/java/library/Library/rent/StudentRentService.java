@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 public class StudentRentService implements RentService{
 
     private final BookRepositoryService bookRepositoryService;
-    private static int period = 3;
+    private final static int period = 3;
 
     @Override
     public Rent rentBook(Long memberId, String title) {
