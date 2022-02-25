@@ -3,11 +3,12 @@ package library.Library.rent;
 import library.Library.AppConfig;
 import library.Library.book.Book;
 import library.Library.book.BookRepository;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import java.util.Map;
 
 public class StudentRentServiceTest {
 
@@ -19,9 +20,11 @@ public class StudentRentServiceTest {
         BookRepository bookRepository = ac.getBean(BookRepository.class);
         bookRepository.insertBook(book);
 
-        RentService rentService = ac.getBean(RentService.class);
-        Rent rent = rentService.rentBook(1L, "book1");
+        Map<String, RentService> beansOfType = ac.getBeansOfType(RentService.class);
 
-        assertThat(rent.getPeriod()).isEqualTo(3);
+        RentService studentRentService = beansOfType.get("studentRentService");
+
+        Rent book1 = studentRentService.rentBook(1L, "book1");
+        Assertions.assertThat(book1.getPeriod()).isEqualTo(3);
     }
 }

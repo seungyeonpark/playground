@@ -3,8 +3,9 @@ package library.Library.rent;
 import library.Library.book.Book;
 import library.Library.book.BookRepositoryService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
-@ProfessorComponent
+@Component
 @RequiredArgsConstructor
 public class ProfessorRentService implements RentService{
 
