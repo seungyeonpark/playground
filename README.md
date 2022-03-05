@@ -11,6 +11,7 @@ playground repository는 다음과 같은 내용들로 구성되어 있습니다
 - [Spring](https://github.com/seungyeonpark/playground/tree/main/Spring)
 
 ### Mini Project
+- [Minimall](https://github.com/seungyeonpark/playground/tree/main/Minimall)
 - [Library](https://github.com/seungyeonpark/playground/tree/main/Library)
 - [Calendar](https://github.com/seungyeonpark/playground/tree/main/Calendar)
 - [BullsAndCows](https://github.com/seungyeonpark/playground/tree/main/BullsAndCows)
