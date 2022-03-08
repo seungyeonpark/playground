@@ -5,6 +5,7 @@ import com.mall.Minimall.domain.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -13,28 +14,22 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class ItemController {
 
-    private final ItemRepository store;
+    private final ItemRepository itemRepository;
 
-    @ResponseBody
     @GetMapping
-    public void items() {
-        Item item1 = new Item("item1", 10000, 10);
-        Item item2 = new Item("item2", 20000, 20);
+    public String items(Model model) {
 
-        store.save(item1);
-        store.save(item2);
-
-        for (Item item : store.findAll()) {
-            log.info(item.getId() + " " + item.getItemName());
-        }
+        model.addAttribute("items", itemRepository.findAll());
+        return "items";
     }
 
-    @ResponseBody
     @GetMapping("/{itemId}")
-    public void item(@PathVariable long itemId) {
+    public String item(@PathVariable long itemId, Model model) {
 
-        Item item = store.findById(itemId);
-        log.info(item.getId() + " " + item.getItemName());
+        Item item = itemRepository.findById(itemId);
+        model.addAttribute("item", item);
+
+        return "item";
     }
 
     @ResponseBody
@@ -53,7 +48,7 @@ public class ItemController {
     @GetMapping("/{itemId}/edit")
     public void editForm(@PathVariable Long itemId){
 
-        Item item = store.findById(itemId);
+        Item item = itemRepository.findById(itemId);
         log.info(item.getId() + " " + item.getItemName());
     }
 
@@ -61,7 +56,7 @@ public class ItemController {
     @PostMapping("/{itemId}/edit")
     public void edit(@PathVariable Long itemId){
 
-        Item item = store.findById(itemId);
+        Item item = itemRepository.findById(itemId);
         log.info(item.getId() + " " + item.getItemName());
     }
 }
