@@ -49,19 +49,18 @@ public class ItemController {
         return "redirect:/items/{itemId}";
     }
 
-    @ResponseBody
     @GetMapping("/{itemId}/edit")
-    public void editForm(@PathVariable Long itemId){
+    public String editForm(@PathVariable Long itemId, Model model){
 
         Item item = itemRepository.findById(itemId);
-        log.info(item.getId() + " " + item.getItemName());
+        model.addAttribute("item", item);
+        return "editForm";
     }
 
-    @ResponseBody
     @PostMapping("/{itemId}/edit")
-    public void edit(@PathVariable Long itemId){
+    public String edit(@PathVariable Long itemId, @ModelAttribute Item item){
 
-        Item item = itemRepository.findById(itemId);
-        log.info(item.getId() + " " + item.getItemName());
+        itemRepository.update(itemId, item);
+        return "redirect:/items/{itemId}";
     }
 }
