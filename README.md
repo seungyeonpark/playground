@@ -6,8 +6,9 @@ playground repository는 다음과 같은 내용들로 구성되어 있습니다
 
 <br />
 
-[**Mar 20, 2022**] [TodoProject](https://github.com/seungyeonpark/playground/tree/main/todo)
-* `Spring oot`, `React.js`, `AWS`
+[**Mar 20, 2022**] TodoProject 
+[[Backend]](https://github.com/seungyeonpark/playground/tree/main/todo) [[Frontend]](https://github.com/seungyeonpark/playground/tree/main/todo-react-app)
+* `Spring Boot`, `React.js`, `AWS`
 
 [**Mar 5, 2022**] [Minimall](https://github.com/seungyeonpark/playground/tree/main/Minimall)
  * `Spring MVC`
