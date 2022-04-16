@@ -1,6 +1,3 @@
-*.classpath
-.project
-
 HELP.md
 .gradle
 build/
@@ -35,5 +32,6 @@ out/
 /dist/
 /nbdist/
 /.nb-gradle/
-*.jar
-stomp/gradle/wrapper/
+
+### VS Code ###
+.vscode/
