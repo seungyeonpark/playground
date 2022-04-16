@@ -15,13 +15,10 @@ public class MessageController {
     private final ChatService chatService;
 
     @MessageMapping("/chat/room/{roomId}")
-    @SendTo("/topic/{roomId}")
+    @SendTo("/topic/chat/room/{roomId}")
     public ChatMessage enter(@DestinationVariable Long roomId, ChatMessage message) {
 
         ChatMessage chatMessage = chatService.createChat(roomId, message.getSender(), message.getMessage());
-
-        System.out.println("==========================================================");
-
         return chatMessage; // TODO
     }
 }
